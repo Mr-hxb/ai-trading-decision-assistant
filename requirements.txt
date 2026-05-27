@@ -1,0 +1,9 @@
+pandas
+numpy
+pyyaml
+python-dotenv
+pytest
+pytest-cov
+
+# Optional provider dependency. Install manually only if you enable AKShare.
+# akshare

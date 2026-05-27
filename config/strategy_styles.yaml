@@ -1,0 +1,28 @@
+doctrines:
+  darvas_box:
+    enabled: true
+    min_volume_ratio: 1.5
+    max_chase_distance_pct: 0.08
+  sperandeo_principles:
+    enabled: true
+    min_rr_ratio: 2.0
+  livermore_tape_reading:
+    enabled: true
+    min_volume_ratio: 1.2
+
+market_regime:
+  default_proxies:
+    us:
+      - SPY
+      - QQQ
+    hk:
+      - HSI
+      - HSTECH
+    cn:
+      - 000001.SH
+      - 399300.SZ
+      - 399006.SZ
+
+committee:
+  downgrade_on_any_reject: true
+  downgrade_on_any_wait: true

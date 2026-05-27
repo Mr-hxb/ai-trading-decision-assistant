@@ -1,0 +1,17 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+.coverage
+htmlcov/
+.DS_Store
+
+# Local generated outputs
+/reports/
+
+# Local agent/runtime instructions that may contain machine-specific workflow notes
+skills/
+docs/final_review.md
+docs/implementation_subagent_protocol.md
+docs/safety_risk_review.md

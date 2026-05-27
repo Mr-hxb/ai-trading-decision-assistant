@@ -1,0 +1,20 @@
+default_runtime: local
+
+runtimes:
+  local:
+    enabled: true
+
+  langgraph:
+    enabled: false
+    package: langgraph
+    note: "Future extension only"
+
+  openai_agents:
+    enabled: false
+    package: openai-agents
+    note: "Future extension only"
+
+  crewai:
+    enabled: false
+    package: crewai
+    note: "Future extension only"

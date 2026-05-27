@@ -1,0 +1,50 @@
+default_provider: mock
+
+providers:
+  mock:
+    enabled: true
+
+  akshare:
+    enabled: true
+    adjust: qfq
+    supported_markets:
+      - cn
+      - hk
+      - us
+
+  tushare:
+    enabled: false
+    token_env: TUSHARE_TOKEN
+
+  futu:
+    enabled: false
+    host_env: FUTU_HOST
+    port_env: FUTU_PORT
+
+  longbridge:
+    enabled: false
+    app_key_env: LONGBRIDGE_APP_KEY
+    app_secret_env: LONGBRIDGE_APP_SECRET
+    access_token_env: LONGBRIDGE_ACCESS_TOKEN
+
+  alpha_vantage:
+    enabled: false
+    api_key_env: ALPHA_VANTAGE_API_KEY
+
+  tiingo:
+    enabled: false
+    api_key_env: TIINGO_API_KEY
+
+  polygon:
+    enabled: false
+    api_key_env: POLYGON_API_KEY
+
+  eodhd:
+    enabled: false
+    api_key_env: EODHD_API_KEY
+    supported_markets:
+      - hk
+      - us
+
+  yfinance:
+    enabled: false

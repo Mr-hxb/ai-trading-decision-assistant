@@ -1,0 +1,39 @@
+darvas:
+  lookback_days: 40
+  max_range_pct: 0.15
+  breakout_volume_ratio: 1.5
+  chase_risk_pct: 0.08
+
+trend:
+  ma_short: 20
+  ma_medium: 50
+  ma_long: 200
+  near_high_days: 120
+  near_high_pct: 0.05
+
+risk:
+  max_single_trade_risk_pct: 0.01
+  min_rr_ratio: 2.0
+
+scoring:
+  trend_weight: 30
+  box_weight: 30
+  volume_weight: 20
+  rr_weight: 10
+  fomo_penalty: 10
+
+decision_committee:
+  allowed_statuses:
+    - 可关注
+    - 等待
+    - 观察
+    - 放弃
+  forbidden_terms:
+    - 买入
+    - 卖出
+    - 必须买入
+    - 必须卖出
+    - 确定上涨
+    - 稳赚
+    - 梭哈
+  require_human_review: true
