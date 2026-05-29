@@ -10,8 +10,7 @@ htmlcov/
 # Local generated outputs
 /reports/
 
-# Local agent/runtime instructions that may contain machine-specific workflow notes
-skills/
+# Local review scratch files
 docs/final_review.md
 docs/implementation_subagent_protocol.md
 docs/safety_risk_review.md
