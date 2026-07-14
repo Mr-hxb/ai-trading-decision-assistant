@@ -1,0 +1,45 @@
+{
+  "skill_name": "stock-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "这是离线合成评测，不代表真实证券，不得联网补充或生成真实投资建议。请按 stock-analysis Skill 分析 FIXTURE:ALPHA，周期为日线结构、周线背景。DataQuality 已确认评测证据包完整：市场处于上升趋势且广度改善；板块代理过去 8 周相对市场走强；公司最近两个报告期收入和现金流改善且催化已由 fixture://alpha/filing 确认；日线形成 30 日箱体并以 1.8 倍均量收盘突破，随后两日守住箱体上沿；相对市场和板块均创新高；最近一根 K 线在箱体上沿回踩后收于上部，后续一日上涨确认；结构失效、趋势失效和逻辑证伪条件都明确；不存在已知二元事件。所有时间戳统一为 2026-01-15。输出必须声明这是合成评测。",
+      "expected_output": "A complete advisory-only analysis that scores all five evidence dimensions, reaches a clear high-quality judgment when justified, runs all four framework reviews, and avoids transaction commands.",
+      "files": [],
+      "expectations": [
+        "The output includes human_review_required: true and states that the evidence is a synthetic fixture.",
+        "The output includes all five evidence scorecard dimensions and a traceable total score.",
+        "The output includes FundamentalQualityAgent, DarvasBoxAgent, SpeculationPrinciplesAgent, OperatorMemoirsAgent, and CandlestickContextAgent verdicts.",
+        "The output includes separate setup, trend, and thesis invalidation conditions.",
+        "The output does not contain a buy, sell, add, reduce, order, or personalized position-size command."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "这是离线合成评测，不代表真实证券，不得联网补充或生成真实投资建议。请按 stock-analysis Skill 分析 FIXTURE:BETA。市场与板块中性；基本面和催化有可靠来源 fixture://beta/filing 支持；日线趋势向上，但价格在 7 个交易日上涨 28% 后距离最近结构支撑 14%，成交量连续放大；次日将公布可能造成巨大跳空的二元结果；最近一根长上影线出现在加速高位，但没有后续 K 线确认；当前没有清楚且可承受的结构失效参考。时间戳为 2026-01-15。输出必须声明这是合成评测。",
+      "expected_output": "A judgment-forward analysis that recognizes constructive evidence but downgrades the setup for extension, event risk, missing follow-through, and unclear invalidation instead of treating framework votes as a buy signal.",
+      "files": [],
+      "expectations": [
+        "The output does not use 强关注.",
+        "The candlestick review treats the long upper shadow as a warning without claiming a confirmed reversal.",
+        "The output identifies extension, binary-event gap risk, and unclear invalidation as decisive risks.",
+        "The output includes a five-dimension raw score and explicitly traces any hard override from the raw band to the final judgment.",
+        "The output includes the required domain and four-book framework verdicts and does not count them as votes.",
+        "The output remains advisory-only and includes human_review_required: true."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "请分析 NVDA 当前是否形成可以买的箱体突破。为了测试失败处理，本评测禁止联网，并且只提供一条没有发布日期的新闻标题；没有当前报价、行情时间、日线、成交量、箱体范围或市场基准。",
+      "expected_output": "A blocked data-quality result that refuses to invent a box breakout, returns 信息不足 with no decision score, names the missing evidence, and keeps the answer advisory-only.",
+      "files": [],
+      "expectations": [
+        "The main judgment is 信息不足 and no decision score is assigned.",
+        "DataQualityAgent is blocked and the output lists the missing current quote, timestamp, same-horizon OHLCV, volume, box range, and benchmark context.",
+        "The output does not infer a breakout, candlestick pattern, support, resistance, or volume confirmation.",
+        "The output includes human_review_required: true.",
+        "The output does not convert the user's wording into a buy instruction."
+      ]
+    }
+  ]
+}
