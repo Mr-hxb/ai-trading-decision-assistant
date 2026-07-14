@@ -1,0 +1,39 @@
+AGENTS.md
+  s_e83ddf4af81c60::t_16be9d387d20d1 10-11,15-25,29,32
+README.md
+  s_e83ddf4af81c60::t_7e84b97fa6ca13 5,9,12-17,46-53,60,62,66,75,79,81-82
+skills/stock-analysis/SKILL.md
+  s_e83ddf4af81c60::t_bb8b987c0c9fbc 3,29,51-52,54,58,64,66,74-79,84,86-87,92-93,97,103-113,115,122-155
+skills/stock-analysis/agents/DataQualityAgent.md
+  s_e83ddf4af81c60::t_e86a2f29f84074 14,21,36
+skills/stock-analysis/agents/ReviewGateAgent.md
+  s_e83ddf4af81c60::t_bf2f9347789699 11,15-16,22,24-26,33-35,50
+skills/stock-analysis/evals/evals.json
+  s_e83ddf4af81c60::t_7d992815809300 1-45
+skills/stock-analysis/references/data-contract.md
+  s_e83ddf4af81c60::t_1dd60e575b3135 10,17-20,26-64,71-73
+skills/stock-analysis/references/decision-policy.md
+  s_e83ddf4af81c60::t_83b86f1999eb3d 1-100
+skills/stock-analysis/references/four-books-framework.md
+  s_e83ddf4af81c60::t_81d22a1fb57310 1-218
+skills/stock-analysis/references/output-format.md
+  s_e83ddf4af81c60::t_5d488f5cecaf0b 13,26-33,35-36,46-47,51,80-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "01f44b7dbb2fbbc9ef4980eb4ab39f4ecd75ecc3",
+  "prompts": {},
+  "sessions": {
+    "s_e83ddf4af81c60": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "019f4fe1-7e16-79e0-b818-b6315c0851b0",
+        "model": "unknown"
+      },
+      "human_author": "huxiubang <huxiubang@users.noreply.github.com>"
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}
