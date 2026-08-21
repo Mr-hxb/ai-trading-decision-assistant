@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>时代电气（688187.SH）研究质量升级版 | 2026-08-21</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --panel: #111827;
+    --panel-2: #1f2937;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --line: #334155;
+    --blue: #38bdf8;
+    --green: #22c55e;
+    --yellow: #f59e0b;
+    --red: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 28px 20px 64px; }
+  h1, h2, h3 { margin: 0 0 12px; }
+  h1 { font-size: 32px; color: var(--blue); }
+  h2 {
+    margin-top: 36px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    color: #dbeafe;
+    font-size: 22px;
+  }
+  h3 { margin-top: 22px; color: #bfdbfe; font-size: 18px; }
+  p { margin: 10px 0; }
+  .muted { color: var(--muted); }
+  .hero, .card, .warn, .good, .bad {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    background: var(--panel);
+    margin: 16px 0;
+  }
+  .hero { padding: 22px 24px; }
+  .warn { border-color: #7c2d12; background: #2b160d; }
+  .good { border-color: #14532d; background: #0e2417; }
+  .bad { border-color: #7f1d1d; background: #2a1111; }
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    margin-right: 8px;
+    background: var(--panel-2);
+    color: var(--muted);
+  }
+  .pill.wait { color: #fcd34d; border: 1px solid #92400e; }
+  .pill.medium { color: #93c5fd; border: 1px solid #1d4ed8; }
+  .pill.s3 { color: #c4b5fd; border: 1px solid #6d28d9; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 14px;
+  }
+  th, td {
+    border-bottom: 1px solid var(--line);
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { color: #bae6fd; background: #122033; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .pos { color: #86efac; }
+  .neg { color: #fca5a5; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0 20px;
+  }
+  .mini {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel);
+    padding: 14px 16px;
+  }
+  .mini .k { color: var(--muted); font-size: 13px; }
+  .mini .v { font-size: 24px; font-weight: 700; margin-top: 6px; }
+  ul, ol { margin: 10px 0 10px 22px; }
+  code {
+    background: #0b1220;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+    color: #cbd5e1;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .small { font-size: 13px; color: var(--muted); }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>时代电气（688187.SH）研究质量升级版</h1>
+    <p class="muted">这不是重写一份更长的报告，而是把上一版里最容易失真的部分，换成更接近一手资料、可交叉核验、可复查的版本。</p>
+    <p>
+      <span class="pill wait">主判断：等待</span>
+      <span class="pill medium">confidence：medium</span>
+      <span class="pill s3">workflow_state：S3</span>
+    </p>
+    <p><strong>一句话判断：</strong>时代电气不是基本面坏掉，而是进入了“轨交稳盘、新业务兑现打折、利润弹性弱于收入弹性”的阶段；当前最缺的不是故事，而是新业务利润修复的可验证证据。</p>
+    <p class="small">human_review_required: true | 分析时间：2026-08-21 | 行情时间：2026-08-21 11:30 左右</p>
+  </div>
+
+  <h2>质量升级点</h2>
+  <div class="good">
+    <ol>
+      <li><strong>把“二手点评口径”替换成“公司公告口径”：</strong>新增核验 <code>2025年年度报告摘要</code> 与 <code>2026年半年度报告</code>。</li>
+      <li><strong>补了冲突清单：</strong>明确标注了 <code>ROE 9.75%</code> 与官方 <code>9.81%</code> 的口径差异，以及 <code>43.62</code> 与 <code>44.22</code> 的低点冲突。</li>
+      <li><strong>补了基准与替代标的的硬数据：</strong>加入沪深300同期走势、汇川技术、国电南瑞、士兰微、斯达半导的最新估值与2025财务。</li>
+      <li><strong>补了独立复核：</strong>增加一轮“基本面红队复核”和一轮“技术风险复核”，避免主叙事自证。</li>
+      <li><strong>把结论拆成事实 / 推测 / 预测：</strong>降低“把判断写成事实”的风险。</li>
+    </ol>
+  </div>
+
+  <h2>修正后的核心结论</h2>
+  <div class="grid">
+    <div class="mini">
+      <div class="k">decision_score</div>
+      <div class="v">4 / 10</div>
+    </div>
+    <div class="mini">
+      <div class="k">最合理状态</div>
+      <div class="v">等待</div>
+    </div>
+    <div class="mini">
+      <div class="k">核心失效位</div>
+      <div class="v">43.6 - 44.2</div>
+    </div>
+  </div>
+  <div class="card">
+    <p><strong>修正后的主结论：</strong>上一版的总体方向没有翻转，但确定性被下调了。原因不是轨交基本盘出了问题，而是最该承接成长溢价的半导体和新能源业务，在 <code>2026H1</code> 没有兑现出足够高质量的利润。</p>
+    <ul>
+      <li><strong>可以保留的判断：</strong>时代电气是“轨交基本盘 + 新兴装备平台”的公司，不是单一轨交股。</li>
+      <li><strong>需要下调确定性的判断：</strong>“半导体成长 + 估值错配”短期内不足以支撑积极结论。</li>
+      <li><strong>需要更严格表述的判断：</strong>当前不是“低估被错杀”，更接近“合理定价下等待利润修复验证”。</li>
+    </ul>
+  </div>
+
+  <h2>事实 / 推测 / 预测</h2>
+
+  <h3>事实</h3>
+  <table>
+    <tr><th>事项</th><th>修正后内容</th><th>来源</th></tr>
+    <tr>
+      <td>2025 全年业绩</td>
+      <td>营收 <strong>287.03亿</strong>，归母净利润 <strong>40.97亿</strong>，扣非归母 <strong>39.00亿</strong>，同比增速分别为 <span class="pos">+15.23%</span>、<span class="pos">+10.64%</span>、<span class="pos">+20.91%</span></td>
+      <td>2025年年度报告摘要</td>
+    </tr>
+    <tr>
+      <td>2025 ROE</td>
+      <td>官方年报摘要口径为 <strong>9.81%</strong>，高于上一版使用的 <code>9.75%</code></td>
+      <td>2025年年度报告摘要</td>
+    </tr>
+    <tr>
+      <td>2026H1 集团层面</td>
+      <td>营收 <strong>130.71亿</strong>、归母净利润 <strong>17.12亿</strong>、基本每股收益 <strong>1.25元</strong>、加权平均ROE <strong>3.96%</strong></td>
+      <td>2026年半年度报告</td>
+    </tr>
+    <tr>
+      <td>2026H1 半导体</td>
+      <td>收入 <strong>27.06亿</strong>，同比 <span class="pos">+10.91%</span>；净利润 <strong>2.12亿</strong>，同比 <span class="neg">-52.14%</span></td>
+      <td>2026-08-20 业绩交流会记录</td>
+    </tr>
+    <tr>
+      <td>2026H1 新能源</td>
+      <td>收入 <strong>3.67亿</strong>，同比 <span class="neg">-64.99%</span></td>
+      <td>2026-08-20 业绩交流会记录</td>
+    </tr>
+    <tr>
+      <td>2025 年现金分红</td>
+      <td>全年现金分红合计 <strong>15.21亿</strong>，约占 2025 归母净利润的 <strong>37.12%</strong></td>
+      <td>2025年年度报告摘要</td>
+    </tr>
+    <tr>
+      <td>控股股东</td>
+      <td>中国中车体系间接持股约 <strong>49.77%</strong></td>
+      <td>2025年年度报告摘要</td>
+    </tr>
+  </table>
+
+  <h3>推测</h3>
+  <div class="card">
+    <ol>
+      <li><strong>半导体利润承压，不只是短期交付节奏问题。</strong> 公司口径已明确包含价格竞争、金属材料涨价、折旧增长、补贴下降四个因素，说明这不是单一口径噪声，而是多因子共振。</li>
+      <li><strong>轨交仍是利润压舱石，但估值锚也仍然偏轨交。</strong> 因为新业务还没把高增长稳定转成高利润，市场不会用纯半导体公司的估值体系去定价。</li>
+      <li><strong>国企折价仍在。</strong> 这不是口号，而是低 ROE、资本密集、关联体系协同与治理约束共同作用下的结果。</li>
+    </ol>
+  </div>
+
+  <h3>预测</h3>
+  <div class="warn">
+    <ul>
+      <li><strong>2026 全年：</strong>利润重新回到 <code>15%-20%</code> 增长的概率偏低。</li>
+      <li><strong>2027 年：</strong>如果低压 IGBT 价格企稳、SiC 爬坡顺利、光伏链条恢复，利润增速有机会修复到 <code>10%-15%</code> 区间。</li>
+      <li><strong>估值重估前提：</strong>不是“讲出更好的故事”，而是看到 <code>半导体利润率回升 + ROE 上台阶 + 技术面重新站上 50.5/55</code>。</li>
+    </ul>
+  </div>
+
+  <h2>一手资料新增的两个重要细节</h2>
+
+  <h3>应收账款结构，比上一版更能说明风险分层</h3>
+  <table>
+    <tr><th>客户类型</th><th>期末账面余额</th><th>坏账准备</th><th>计提比例</th><th>含义</th></tr>
+    <tr>
+      <td>中央国企客户（除铁总外）</td>
+      <td class="num">95.24亿</td>
+      <td class="num">2.55亿</td>
+      <td class="num">2.68%</td>
+      <td>质量较高，回款风险相对可控</td>
+    </tr>
+    <tr>
+      <td>地方政府或地方国企客户</td>
+      <td class="num">17.57亿</td>
+      <td class="num">5.16亿</td>
+      <td class="num">29.4%</td>
+      <td>地方财政约束在财报里有直接映射，这对城轨业务质量是实打实的风险提示</td>
+    </tr>
+    <tr>
+      <td>铁总相关</td>
+      <td class="num">1.45亿</td>
+      <td class="num">0.008亿</td>
+      <td class="num">0.05%</td>
+      <td>铁路主线客户信用质量极强</td>
+    </tr>
+  </table>
+  <p class="small">数据来源：2026年半年度报告。</p>
+
+  <h3>广义“安全垫”成立，但不是无条件成立</h3>
+  <div class="card">
+    <p>上一版把轨交业务定义为“安全垫”，这个方向大体没错；但升级后需要更严格：</p>
+    <ul>
+      <li><strong>铁路主线、检修、国铁相关业务：</strong>更接近安全垫。</li>
+      <li><strong>地方城轨相关客户：</strong>存在财政约束带来的回款和需求质量问题，不应与国铁业务混成一个信用等级。</li>
+    </ul>
+    <p>也就是说，轨交不是单一风险水平业务，而是“国铁偏稳、地方城轨偏弱”的二层结构。</p>
+  </div>
+
+  <h2>基准与同业硬对照</h2>
+
+  <h3>基准：沪深300没有出现与个股同级别的崩塌</h3>
+  <div class="card">
+    <p>从 Wind 获取的 <code>000300.SH</code> 日线看，沪深300在 <code>2026-07-01</code> 附近约为 <strong>4958.98</strong>，到 <code>2026-08-21</code> 为 <strong>4616.83</strong>，区间跌幅约 <strong class="neg">-6.9%</strong>。</p>
+    <p>时代电气同一区间从 <strong>68.30</strong> 跌到 <strong>47.76</strong>，区间跌幅约 <strong class="neg">-30.1%</strong>。</p>
+    <p><strong>结论：</strong>7月那轮下跌不能简单归因为系统性市场风险，个股层面的高位兑现和结构失衡才是主要解释。</p>
+  </div>
+
+  <h3>替代标的：最新估值 + 2025 财务</h3>
+  <table>
+    <tr>
+      <th>公司</th>
+      <th>2025营收</th>
+      <th>2025归母</th>
+      <th>2025 ROE</th>
+      <th>最新PE</th>
+      <th>最新PB</th>
+      <th>股息率</th>
+    </tr>
+    <tr>
+      <td>时代电气</td>
+      <td class="num">287.03亿</td>
+      <td class="num">40.97亿</td>
+      <td class="num">9.81%</td>
+      <td class="num">15.36</td>
+      <td class="num">约1.5</td>
+      <td class="num">2.39%</td>
+    </tr>
+    <tr>
+      <td>汇川技术</td>
+      <td class="num">451.05亿</td>
+      <td class="num">50.50亿</td>
+      <td class="num">15.94%</td>
+      <td class="num">33.83</td>
+      <td class="num">4.57</td>
+      <td class="num">0.85%</td>
+    </tr>
+    <tr>
+      <td>国电南瑞</td>
+      <td class="num">662.29亿</td>
+      <td class="num">82.79亿</td>
+      <td class="num">16.25%</td>
+      <td class="num">22.33</td>
+      <td class="num">3.73</td>
+      <td class="num">2.68%</td>
+    </tr>
+    <tr>
+      <td>斯达半导</td>
+      <td class="num">40.12亿</td>
+      <td class="num">4.05亿</td>
+      <td class="num">5.95%</td>
+      <td class="num">71.45</td>
+      <td class="num">3.35</td>
+      <td class="num">0.53%</td>
+    </tr>
+    <tr>
+      <td>士兰微</td>
+      <td class="num">130.52亿</td>
+      <td class="num">3.99亿</td>
+      <td class="num">3.30%</td>
+      <td class="num">130.17</td>
+      <td class="num">4.50</td>
+      <td class="num">0.25%</td>
+    </tr>
+  </table>
+  <p class="small">时代电气数据截至 2026-08-21；其余最新估值时间为 2026-08-21 11:30 左右，财务为 2025 年报口径。</p>
+
+  <div class="card">
+    <p><strong>这组对照修正了上一版的一个隐含偏差：</strong>时代电气“便宜”这件事，只能相对纯半导体股成立；相对确定性更强、ROE 更高的高端制造/电网自动化龙头，它并不算显著低估。</p>
+  </div>
+
+  <h2>冲突项与处理方式</h2>
+  <table>
+    <tr><th>冲突项</th><th>上一版</th><th>升级后处理</th></tr>
+    <tr>
+      <td>2025 ROE</td>
+      <td>9.75%</td>
+      <td>以官方摘要 <strong>9.81%</strong> 为准；原值视作口径差异，不再用作主表述</td>
+    </tr>
+    <tr>
+      <td>2026年7月低点</td>
+      <td>43.62 单点</td>
+      <td>由于公开片段同时出现 <code>43.62</code> 与 <code>44.22</code>，改为 <strong>43.6-44.2 失效带</strong>，避免伪精确</td>
+    </tr>
+    <tr>
+      <td>“轨交安全垫”</td>
+      <td>整体性判断</td>
+      <td>拆成“国铁偏稳、地方城轨偏弱”的双层结构</td>
+    </tr>
+  </table>
+
+  <h2>Agent 复核摘要</h2>
+  <table>
+    <tr><th>复核角色</th><th>结论</th><th>最关键原因</th></tr>
+    <tr><td>DataQualityAgent</td><td>limited_decision</td><td>基本面证据足够，但技术面缺完整同周期 OHLCV 与量能</td></tr>
+    <tr><td>FundamentalQualityAgent</td><td>等待</td><td>2025很好，但 2026H1 半导体“增收不增利”、新能源明显塌缩</td></tr>
+    <tr><td>TechnicalSystemAgent</td><td>等待</td><td>68.3 → 43.6 急跌后，仅反弹到 50.25 附近，未收复 50.5/55</td></tr>
+    <tr><td>RiskDisciplineAgent</td><td>偏谨慎</td><td>当前最清晰的是失效位，不是进攻触发位</td></tr>
+    <tr><td>Darvas / 投机原理 / 作手</td><td>一致偏等待</td><td>都不支持把区间修复直接解释成趋势反转</td></tr>
+  </table>
+
+  <h2>修正后的交易语言</h2>
+  <div class="bad">
+    <p><strong>应该删除的语言：</strong>“估值错配明显”“戴维斯双击可期待”“当前价具备明显低估优势”。</p>
+    <p><strong>应该保留的语言：</strong>“公司基本面未崩坏，但最关键的新业务利润兑现弱于预期；当前更适合观察，不适合拔高胜率判断。”</p>
+  </div>
+
+  <div class="card">
+    <p><strong>修正后的关键位：</strong></p>
+    <ul>
+      <li><strong>失效位：</strong><code>43.6 - 44.2</code></li>
+      <li><strong>第一确认位：</strong><code>50.5</code></li>
+      <li><strong>中期修复位：</strong><code>55</code></li>
+    </ul>
+    <p><strong>修正后的纪律表达：</strong>在 <code>50.5</code> 下方，只能说“未转强”，不能说“已经具备高胜率结构”；再破 <code>43.6 - 44.2</code>，则当前修复逻辑失效。</p>
+  </div>
+
+  <h2>最终修正版结论</h2>
+  <div class="hero">
+    <p><strong>主判断：</strong>等待</p>
+    <p><strong>decision_score：</strong>4 / 10</p>
+    <p><strong>confidence：</strong>medium</p>
+    <p><strong>一句话结论：</strong>时代电气值得继续跟踪，但现在还不值得主动提高配置优先级；需要先看到半导体利润修复和技术位重新收复，再讨论“成长与估值错配”。</p>
+    <p><strong>失效条件：</strong>股价有效跌破 <code>43.6 - 44.2</code>；或后续披露继续显示半导体利润恶化、新能源收入未恢复。</p>
+    <p><strong>升级条件：</strong>股价有效收复 <code>50.5</code> 并站稳，进一步突破 <code>55</code>；同时基本面上出现“收入增长重新转为利润增长”的证据。</p>
+  </div>
+
+  <h2>Sources</h2>
+  <ol>
+    <li><a href="https://m.wind.com.cn/mobwftweb/M/?code=1A4DCA5A9C57&lan=zh&device=pc&terminaltype=COM.WINDRAG&version=26.5.0.39845&gateway=na#/NA/8885167081E5084DDFAEEA9998E18E28">时代电气：2025年年度报告摘要</a></li>
+    <li><a href="https://m.wind.com.cn/mobwftweb/M/?code=4A0CEEDB8B37&lan=zh&device=pc&terminaltype=COM.WINDRAG&version=26.5.0.39845&gateway=na#/NA/3F651F1060B8DE0AAA530FCF1B78D55E">时代电气：2026年半年度报告</a></li>
+    <li><a href="https://t.wind.com.cn/mobwftweb/M/news.html?share=wechat&show=wft&code=402FE8397370&newsopenstyle=&lan=cn&device=pc&gateway=news&related=true&terminaltype=COM.WINDRAG&version=&useless=0.717658#/CFDE75BD9B363F06BE659313F106E4A6">时代电气：2026-08-20 机构调研与业绩交流会记录</a></li>
+    <li><a href="https://xueqiu.com/S/SH688187/">雪球：时代电气实时行情页</a></li>
+    <li><a href="https://vip.stock.finance.sina.com.cn/corp/go.php/vCB_AllBulletin/stockid/688187.phtml">新浪财经：时代电气行情与公告页</a></li>
+    <li>Wind：沪深300（000300.SH）2025-01-01 至 2026-08-21 日线数据</li>
+    <li>Wind：汇川技术、国电南瑞、士兰微、斯达半导 2025 财务与 2026-08-21 最新估值数据</li>
+  </ol>
+
+  <div class="warn">
+    <p><strong>限制：</strong>本升级版已经显著提升了基本面证据质量，但技术面仍未拿到完整同周期 OHLCV 全量序列与量能交叉验证，因此对 <code>2B</code>、<code>1-2-3</code>、箱体突破质量的判断仍然只能保持保守。</p>
+  </div>
+</div>
+</body>
+</html>

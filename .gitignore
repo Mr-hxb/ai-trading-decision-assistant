@@ -9,8 +9,20 @@ htmlcov/
 
 # Local generated outputs
 /reports/
+/skills/stock-analysis-workspace/
+/skills/stock-analysis.zip
+
+# Local data scratch from deprecated executable pipelines
+/data/
+
+# Local book source files are research inputs, not repository runtime content
+/*.epub
+/*.mobi
+/日本蜡烛图.pdf
 
 # Local review scratch files
 docs/final_review.md
 docs/implementation_subagent_protocol.md
 docs/safety_risk_review.md
+
+# Repository content: do not ignore /watchlists/.
