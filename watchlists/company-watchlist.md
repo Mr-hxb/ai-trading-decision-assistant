@@ -34,3 +34,4 @@ Use this file as the source list for recurring company reviews. Keep entries fac
 | 3690.HK | HK | Meituan | 美团 | active | 2026-06-01 | Prior all-agent candidate screening set | Screening candidate only. |
 | 2318.HK | HK | Ping An Insurance (Group) Company of China, Ltd. | 中国平安 | active | 2026-06-01 | Prior all-agent candidate screening set | Screening candidate only. |
 | IREN | US | IREN Limited | IREN | active | 2026-06-01 | User-requested analysis of IREN | AI Cloud / Bitcoin mining pivot; high execution and financing risk. |
+| 02513.HK | HK | Knowledge Atlas Technology Joint Stock Company Limited | 智谱 | active | 2026-08-21 | User-requested analysis of 智谱 | Listed on HKEX as 02513.HK; common Chinese name recorded as 智谱. |

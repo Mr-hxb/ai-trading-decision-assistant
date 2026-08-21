@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>时代电气（688187.SH）深度研究报告 | 2026-08-21</title>
+<style>
+  :root {
+    --bg: #1a1a2e;
+    --fg: #e0e0e0;
+    --accent: #4fc3f7;
+    --warn: #ff8a65;
+    --danger: #ef5350;
+    --success: #66bb6a;
+    --card: #16213e;
+    --border: #2a2a4a;
+    --h2: #4fc3f7;
+    --h3: #82b1ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px 30px; }
+  header {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 3px solid var(--accent);
+    margin-bottom: 40px;
+  }
+  header h1 { font-size: 2.2em; color: var(--accent); margin-bottom: 10px; }
+  header .subtitle { font-size: 1.1em; color: #888; }
+  header .meta { font-size: 0.9em; color: #666; margin-top: 10px; }
+
+  .disclaimer-box {
+    background: #2a1a1a;
+    border: 2px solid var(--danger);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 30px 0;
+    font-size: 0.9em;
+    color: var(--warn);
+  }
+
+  h2 {
+    font-size: 1.6em;
+    color: var(--h2);
+    margin: 50px 0 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+  }
+  h3 {
+    font-size: 1.2em;
+    color: var(--h3);
+    margin: 30px 0 15px;
+  }
+  h4 { font-size: 1.05em; color: #ccc; margin: 20px 0 10px; }
+
+  p { margin: 10px 0; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 0.9em;
+  }
+  th {
+    background: #1e3a5f;
+    color: var(--accent);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:hover td { background: rgba(79, 195, 247, 0.05); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .pos { color: var(--success); }
+  .neg { color: var(--danger); }
+  .warn { color: var(--warn); }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .score-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .score-item .label { font-size: 0.85em; color: #888; }
+  .score-item .value { font-size: 2em; font-weight: bold; color: var(--accent); }
+  .score-item .bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    margin-top: 8px;
+    overflow: hidden;
+  }
+  .score-item .bar-fill { height: 100%; border-radius: 3px; }
+
+  .verdict-box {
+    padding: 24px;
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: 1.1em;
+  }
+  .verdict-buy { background: #1a3a1a; border: 2px solid var(--success); }
+  .verdict-wait { background: #3a2a1a; border: 2px solid var(--warn); }
+  .verdict-avoid { background: #3a1a1a; border: 2px solid var(--danger); }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .scenario { padding: 20px; border-radius: 8px; text-align: center; }
+  .scenario.bull { background: #1a3a1a; border: 1px solid var(--success); }
+  .scenario.base { background: #1a2a3a; border: 1px solid var(--accent); }
+  .scenario.bear { background: #3a1a1a; border: 1px solid var(--danger); }
+  .scenario .label { font-size: 0.85em; color: #888; }
+  .scenario .price { font-size: 1.5em; font-weight: bold; }
+
+  .kpi-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 130px;
+  }
+  .kpi .label { font-size: 0.8em; color: #888; }
+  .kpi .value { font-size: 1.4em; font-weight: bold; color: var(--accent); }
+
+  ul, ol { margin: 10px 0 10px 24px; }
+  li { margin: 4px 0; }
+
+  .highlight { background: rgba(79,195,247,0.15); padding: 2px 6px; border-radius: 3px; }
+  strong { color: #fff; }
+  .source { font-size: 0.8em; color: #666; margin-top: 4px; }
+
+  .section-nav {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .section-nav ol { columns: 2; }
+  .section-nav a { color: var(--accent); text-decoration: none; }
+  .section-nav a:hover { text-decoration: underline; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 30px 0; }
+
+  @media (max-width: 768px) {
+    .scenario-grid { grid-template-columns: 1fr; }
+    .section-nav ol { columns: 1; }
+    .container { padding: 10px 15px; }
+    header h1 { font-size: 1.5em; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>时代电气（688187.SH）独立深度研究报告</h1>
+  <div class="subtitle">基本面筛选 → 趋势确认 → 结构入场 → 概率加仓 → 机械退出 → 条件化重进</div>
+  <div class="meta">
+    分析日期：2026年8月21日 | 数据截止：2026年8月21日 | 股价：47.76元 | 总市值：635.5亿
+  </div>
+</header>
+
+<div class="disclaimer-box">
+  <strong>⚠️ 重要声明</strong><br>
+  本报告仅供研究参考，不构成任何投资建议。所有分析结论均为概率性判断，存在不确定性。投资者应独立决策并承担风险。本报告严格遵守"不根据后续走势优化历史买卖点"的原则，所有买卖点均基于分析时点真实可获得的信息。报告包含红队反方论证，目的是平衡研究视角，而非暗示任何方向性结论。
+</div>
+
+<!-- ====== 导航 ====== -->
+<div class="section-nav">
+  <strong>报告目录</strong>
+  <ol>
+    <li><a href="#s1">公司到底是什么公司？</a></li>
+    <li><a href="#s2">第二增长曲线是否真实？</a></li>
+    <li><a href="#s3">利润增长为何慢于收入？</a></li>
+    <li><a href="#s4">轨交业务：安全垫还是拖累？</a></li>
+    <li><a href="#s5">估值是否真的便宜？</a></li>
+    <li><a href="#s6">技术面独立分析</a></li>
+    <li><a href="#s7">寻找可执行交易结构</a></li>
+    <li><a href="#s8">完整交易计划</a></li>
+    <li><a href="#s9">强制红队：证伪投资逻辑</a></li>
+    <li><a href="#s10">寻找替代标的</a></li>
+    <li><a href="#s11">空头报告</a></li>
+    <li><a href="#s12">最终强制结论</a></li>
+  </ol>
+</div>
+
+<!-- ====== 关键指标快照 ====== -->
+<h2>关键指标快照</h2>
+<div class="kpi-row">
+  <div class="kpi"><div class="label">最新股价</div><div class="value">47.76</div><div class="label">2026-08-21</div></div>
+  <div class="kpi"><div class="label">TTM PE</div><div class="value">15.36</div><div class="label">倍</div></div>
+  <div class="kpi"><div class="label">总市值</div><div class="value">635.5</div><div class="label">亿</div></div>
+  <div class="kpi"><div class="label">股息率</div><div class="value">2.39</div><div class="label">%</div></div>
+  <div class="kpi"><div class="label">52周最高</div><div class="value">68.32</div><div class="label">2026-07-01</div></div>
+  <div class="kpi"><div class="label">52周最低</div><div class="value">43.62</div><div class="label">2026-07-17</div></div>
+</div>
+
+<!-- ====== 一、公司到底是什么公司？ ====== -->
+<h2 id="s1">一、公司到底是什么公司？</h2>
+
+<h3>1.1 五年财务全景</h3>
+<table>
+  <tr><th>指标</th><th>2021</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>CAGR</th></tr>
+  <tr><td>营业收入（亿）</td><td class="num">151.21</td><td class="num">180.34</td><td class="num">217.99</td><td class="num">249.09</td><td class="num">287.03</td><td class="num pos">+17.5%</td></tr>
+  <tr><td>归母净利润（亿）</td><td class="num">20.18</td><td class="num">25.56</td><td class="num">31.06</td><td class="num">37.03</td><td class="num">40.97</td><td class="num pos">+19.3%</td></tr>
+  <tr><td>扣非净利润（亿）</td><td class="num">15.25</td><td class="num">19.98</td><td class="num">25.95</td><td class="num">32.26</td><td class="num">39.00</td><td class="num pos">+26.5%</td></tr>
+  <tr><td>毛利率</td><td class="num">33.74%</td><td class="num">32.69%</td><td class="num">33.86%</td><td class="num">32.48%</td><td class="num">33.43%</td><td class="num">稳定</td></tr>
+  <tr><td>净利率</td><td class="num">13.46%</td><td class="num">14.37%</td><td class="num">14.45%</td><td class="num">15.85%</td><td class="num">15.01%</td><td class="num">小幅提升</td></tr>
+  <tr><td>ROE</td><td class="num">7.15%</td><td class="num">7.61%</td><td class="num">8.70%</td><td class="num">9.45%</td><td class="num">9.75%</td><td class="num">缓慢提升</td></tr>
+  <tr><td>经营现金流（亿）</td><td class="num">21.50</td><td class="num">20.41</td><td class="num">27.82</td><td class="num">33.61</td><td class="num">39.65</td><td class="num pos">+16.5%</td></tr>
+</table>
+<div class="source">数据来源：Wind 万得金融数据，公司年报</div>
+
+<h3>1.2 业务结构演变</h3>
+<table>
+  <tr><th>业务板块</th><th>2021 收入</th><th>2021 占比</th><th>2025 收入</th><th>2025 占比</th><th>4年 CAGR</th></tr>
+  <tr><td>轨道交通装备</td><td class="num">122.52亿</td><td class="num">81.0%</td><td class="num">158.06亿</td><td class="num">55.1%</td><td class="num pos">+6.6%</td></tr>
+  <tr><td>新兴装备合计</td><td class="num">25.72亿</td><td class="num">17.0%</td><td class="num">127.81亿</td><td class="num">44.5%</td><td class="num pos">+49.4%</td></tr>
+  <tr><td style="padding-left:24px">- 功率半导体</td><td class="num">~15亿</td><td class="num">~10%</td><td class="num">53.60亿</td><td class="num">18.7%</td><td class="num pos">~40%</td></tr>
+  <tr><td style="padding-left:24px">- 新能源汽车电驱</td><td class="num">~5亿</td><td class="num">~3%</td><td class="num">32.68亿</td><td class="num">11.4%</td><td class="num pos">~60%</td></tr>
+  <tr><td style="padding-left:24px">- 新能源发电</td><td class="num">~3亿</td><td class="num">~2%</td><td class="num">24.01亿</td><td class="num">8.4%</td><td class="num pos">~70%</td></tr>
+  <tr><td style="padding-left:24px">- 海洋装备</td><td class="num">-</td><td class="num">-</td><td class="num">10.30亿</td><td class="num">3.6%</td><td class="num">-</td></tr>
+  <tr><td style="padding-left:24px">- 工业变流</td><td class="num">-</td><td class="num">-</td><td class="num">7.21亿</td><td class="num">2.5%</td><td class="num">-</td></tr>
+</table>
+<div class="source">数据来源：Wind 万得金融数据，公司年报</div>
+
+<h3>1.3 公司定性：高端装备平台公司，而非单纯的轨交或半导体公司</h3>
+
+<div class="card">
+  <p><strong>事实判断：</strong>时代电气正在经历从"传统轨交装备公司"向"高端装备平台公司"的转型。2021年轨交业务占比81%，到2025年已降至55%。新兴装备四年CAGR高达49.4%，远超轨交的6.6%。</p>
+  <p>但如果将其定义为"功率半导体成长公司"，则存在估值误判风险——半导体业务2025年收入53.6亿，占比仅18.7%，且2026H1净利润同比暴跌52%，盈利能力远未成熟。</p>
+  <p><strong>最准确的定性：</strong>时代电气是一个以轨交装备为基本盘、以功率半导体为核心突破方向、同时布局新能源电驱/发电/海工/工业变流的高端装备平台型公司。其特点是"多业务并行、各业务处于不同生命周期"。</p>
+</div>
+
+<h3>1.4 未来3年利润增长的核心驱动力</h3>
+<p>基于2026H1最新数据，各业务板块利润贡献排序如下：</p>
+<ol>
+  <li><strong>轨交装备（含检修）：</strong>仍是利润主体。2026H1检修收入18.42亿，占轨交板块24.3%。轨交毛利率稳定，是利润压舱石。</li>
+  <li><strong>功率半导体：</strong>收入增长最快，但2026H1净利润仅2.12亿（同比-52%），盈利贡献远低于收入占比。短期利润贡献有限，中期（2027-2028）产能爬坡完成后有望释放。</li>
+  <li><strong>新能源汽车电驱：</strong>2026H1收入14.64亿（+46.5%），但公司明确表示"行业整体面临较大的盈利压力"，尚未盈利。</li>
+  <li><strong>新能源发电：</strong>2026H1受光伏行业调整冲击，收入仅3.67亿（-65%），短期拖累。</li>
+</ol>
+<p><strong>核心结论：未来3年，真正决定集团利润增长的是轨交业务的稳定性和半导体盈利能力的修复速度。新兴装备的"收入高增长"不等于"利润高增长"。</strong></p>
+
+
+<!-- ====== 二、第二增长曲线 ====== -->
+<h2 id="s2">二、第二增长曲线是否真实？</h2>
+
+<h3>2.1 技术能力评估</h3>
+<div class="card">
+  <table>
+    <tr><th>维度</th><th>当前水平</th><th>与国际领先差距</th></tr>
+    <tr><td>IGBT芯片设计</td><td>国内领先，第七代IGBT已量产</td><td>与英飞凌1-2代差距，但差距在缩小</td></tr>
+    <tr><td>晶圆制造</td><td>宜兴8英寸IGBT产线满产（3万片/月）</td><td>规模不及英飞凌，但产能持续扩张</td></tr>
+    <tr><td>模块封装</td><td>车规级模块批量交付</td><td>接近国际水平</td></tr>
+    <tr><td>SiC技术</td><td>第四代沟槽栅SiC MOSFET已定型，1200V产品对标国际龙头</td><td>落后英飞凌/安森美约1-2年</td></tr>
+    <tr><td>SiC产能</td><td>株洲8英寸SiC产线2025年底拉通，预计2027年中达第一阶段设计产能</td><td>产能规模远低于Wolfspeed/英飞凌</td></tr>
+    <tr><td>车规级能力</td><td>2025年新能源乘用车功率模块装机量260.76万套，市占率13.8%，排名第二</td><td>国内领先</td></tr>
+  </table>
+</div>
+
+<h3>2.2 产业地位</h3>
+<ul>
+  <li><strong>IGBT模块：</strong>轨交、电网领域市占率国内第一，新能源乘用车领域市占率13.8%排名第二（仅次于比亚迪）</li>
+  <li><strong>产能：</strong>宜兴IGBT产线2025年6月满产，株洲SiC产线爬坡中</li>
+  <li><strong>客户结构：</strong>轨交（国铁集团/中车体系）、电网（国家电网）、汽车（大众、丰田、通用等14+家车企）、新能源发电</li>
+</ul>
+
+<h3>2.3 竞争格局</h3>
+<table>
+  <tr><th>对比维度</th><th>时代电气</th><th>斯达半导</th><th>士兰微</th><th>英飞凌</th></tr>
+  <tr><td>IGBT技术</td><td>第七代，国内领先</td><td>第七代，车规领先</td><td>第六代为主</td><td>第八代，全球领先</td></tr>
+  <tr><td>SiC进展</td><td>第四代沟槽栅，8英寸线爬坡</td><td>SiC模块批量出货</td><td>SiC产线建设中</td><td>CoolSiC第三代</td></tr>
+  <tr><td>2025半导体收入</td><td class="num">53.6亿</td><td class="num">~45亿</td><td class="num">~30亿</td><td class="num">~€40亿</td></tr>
+  <tr><td>毛利率</td><td>~25-30%（半导体内）</td><td>~35%</td><td>~25%</td><td>~45%</td></tr>
+  <tr><td>核心壁垒</td><td>轨交+电网独占市场+IDM</td><td>车规IGBT先发+客户</td><td>IDM+产品线广</td><td>技术+品牌+规模</td></tr>
+  <tr><td>资本开支</td><td>大（宜兴+株洲双线）</td><td>中</td><td>大</td><td>极大</td></tr>
+</table>
+
+<h3>2.4 半导体增长驱动力判断</h3>
+<div class="card">
+  <p><strong>核心判断：时代电气半导体业务的高速增长，过去3年主要来自——国产替代（50%）+ 行业景气（25%）+ 扩产放量（25%）。自身竞争力体现在轨交/电网独占市场，但车规/新能源领域面临激烈价格竞争。</strong></p>
+  <p><strong>关键证据：</strong>2026H1时代半导体收入27.06亿（+10.91%），但净利润从4.42亿暴跌至2.12亿（-52.14%）。公司明确归因于"汽车IGBT和新能源IGBT市场竞争激烈+金属材料涨价+折旧增长+补贴下降"。这证明：</p>
+  <ol>
+    <li>收入增长并非不受竞争影响——竞争正在侵蚀利润</li>
+    <li>国产替代逻辑的边际效应在递减——最容易替代的部分已经完成</li>
+    <li>扩产带来的折旧正在拖累利润</li>
+  </ol>
+</div>
+
+<h3>2.5 SiC：市场预期明显跑在基本面前面</h3>
+<div class="card">
+  <p><strong>事实：</strong></p>
+  <ul>
+    <li>株洲8英寸SiC产线2025年底拉通，预计<strong>2027年中</strong>才达到第一阶段设计产能</li>
+    <li>SiC MOSFET"小批量交付"，车规级SiC产品"已有小批量交付"</li>
+    <li>SiC SBD在光伏领域"稳定批量供货"</li>
+    <li>公司未单独披露SiC收入和利润</li>
+  </ul>
+  <p><strong>判断：</strong>SiC对时代电气而言，未来2年内（2026-2027）仍处于投入期和产能爬坡期，不会形成实质性利润贡献。市场将SiC作为估值提升的核心叙事，但基本面兑现需要等到2028年以后。当前市场对SiC的预期<strong>明显跑在基本面前面</strong>。</p>
+</div>
+
+
+<!-- ====== 三、利润增长为何慢于收入？ ====== -->
+<h2 id="s3">三、为什么新兴业务增长快，但集团利润增长可能较慢？</h2>
+
+<h3>3.1 2026H1 核心数据</h3>
+<table>
+  <tr><th>指标</th><th>2026H1</th><th>2025H1</th><th>同比</th></tr>
+  <tr><td>集团营业收入</td><td class="num">130.71亿</td><td class="num">122.14亿</td><td class="num pos">+7.01%</td></tr>
+  <tr><td>轨交板块收入</td><td class="num">75.80亿</td><td class="num">69.11亿</td><td class="num pos">+9.67%</td></tr>
+  <tr><td>新兴装备收入</td><td class="num">54.28亿</td><td class="num">52.44亿</td><td class="num">+3.50%</td></tr>
+  <tr><td>半导体收入</td><td class="num">27.06亿</td><td class="num">24.40亿</td><td class="num pos">+10.91%</td></tr>
+  <tr><td>半导体净利润</td><td class="num">2.12亿</td><td class="num">4.42亿</td><td class="num neg">-52.14%</td></tr>
+  <tr><td>汽车板块收入</td><td class="num">14.64亿</td><td class="num">9.99亿</td><td class="num pos">+46.50%</td></tr>
+  <tr><td>新能源板块收入</td><td class="num">3.67亿</td><td class="num">10.47亿</td><td class="num neg">-64.99%</td></tr>
+  <tr><td>海洋板块收入</td><td class="num">5.53亿</td><td class="num">4.23亿</td><td class="num pos">+30.76%</td></tr>
+  <tr><td>工业板块收入</td><td class="num">3.45亿</td><td class="num">3.59亿</td><td class="num">-3.74%</td></tr>
+  <tr><td>研发费用（费用化）</td><td class="num">13.51亿</td><td class="num">12.14亿</td><td class="num">+11.3%</td></tr>
+  <tr><td>其他收益（补贴）</td><td class="num">0.98亿</td><td class="num">2.28亿</td><td class="num neg">-57.0%</td></tr>
+  <tr><td>Q1 归母净利润</td><td class="num">6.43亿</td><td class="num">-</td><td class="num">-</td></tr>
+  <tr><td>Q1 毛利率</td><td class="num">33.31%</td><td class="num">-</td><td class="num">-</td></tr>
+  <tr><td>Q1 净利率</td><td class="num">13.18%</td><td class="num">-</td><td class="num">-</td></tr>
+</table>
+<div class="source">数据来源：Wind 万得金融数据，公司2026H1业绩交流会（2026-08-20）</div>
+
+<h3>3.2 利润增速慢于收入的核心原因</h3>
+<div class="card">
+  <p><strong>诊断：这是"扩产期利润承压"+"产品结构问题"+"行业价格竞争"+"补贴退坡"的多重叠加。</strong></p>
+  <ol>
+    <li><strong>汽车IGBT/新能源IGBT价格战：</strong>公司明确承认"汽车IGBT和新能源IGBT市场竞争激烈"，导致毛利率下降。这是行业性现象——IGBT国产化率提升后，价格竞争不可避免。</li>
+    <li><strong>折旧压力：</strong>宜兴IGBT产线、株洲SiC产线转固，折旧同比增长。2026H1半导体净利润暴跌52%，折旧是核心原因之一。</li>
+    <li><strong>金属材料涨价：</strong>铜、铝等大宗商品涨价传导至功率半导体成本端。</li>
+    <li><strong>补贴大幅退坡：</strong>其他收益从2.28亿降至0.98亿，减少1.3亿。</li>
+    <li><strong>新能源板块塌方：</strong>光伏行业调整导致新能源板块收入暴跌65%，从利润贡献者变为拖累。</li>
+    <li><strong>研发费用持续高增：</strong>费用化研发投入13.51亿（+11%），作为科创板公司，研发投入刚性。</li>
+    <li><strong>汽车电驱尚未盈利：</strong>收入高增但未盈利，规模效应尚未显现。</li>
+  </ol>
+</div>
+
+<h3>3.3 未来利润增长15%-20%是否现实？</h3>
+<div class="card">
+  <p><strong>判断：2026年几乎不可能，2027年有挑战，2028年有可能。</strong></p>
+  <ul>
+    <li><strong>2026年：</strong>半导体净利润腰斩+新能源板块塌方+补贴退坡，预计全年归母净利润增速在0%-5%之间，甚至可能持平或微降。</li>
+    <li><strong>2027年：</strong>如果低压IGBT价格企稳（公司已在7月发涨价函）、SiC产能开始释放、新能源板块触底，利润增速有望恢复至10%-15%。</li>
+    <li><strong>2028年：</strong>SiC产能达产+折旧高峰过去+轨交检修业务持续增长，有可能实现15%-20%利润增长。</li>
+  </ul>
+  <p><strong>核心风险：</strong>IGBT价格战是否真正见底、SiC产能爬坡是否顺利、新能源板块能否恢复。</p>
+</div>
+
+
+<!-- ====== 四、轨交业务 ====== -->
+<h2 id="s4">四、轨交业务：安全垫还是拖累？</h2>
+
+<h3>4.1 市场空间与增长逻辑</h3>
+<div class="card">
+  <ul>
+    <li><strong>十五五规划：</strong>到2030年全国铁路营业里程达18万公里（高铁6万公里），较2025年末增加1.5万公里。年均新线投产约3000公里，高铁约2000公里，带来动车组约200组/年的基础需求。</li>
+    <li><strong>2026H1数据：</strong>铁路固定资产投资3632亿（+2.1%），动车组招标70组（略增），机车招标308台（+150%以上）。</li>
+    <li><strong>检修业务：</strong>2026H1检修收入18.42亿（+10.47%），占轨交板块24.3%。存量车辆增加→检修需求持续增长。</li>
+    <li><strong>通信信号：</strong>2026H1收入5.44亿（+15.67%），城轨信号改造+海外突破带来增量。</li>
+    <li><strong>国家电网十五五：</strong>固定资产投资4万亿，较十四五增长40%，直接拉动高压IGBT需求。</li>
+  </ul>
+</div>
+
+<h3>4.2 定性判断</h3>
+<div class="card">
+  <p><strong>轨交业务未来3-5年的定位是：稳定现金牛 + 温和成长业务。</strong></p>
+  <ul>
+    <li><strong>不是长期拖累：</strong>十五五铁路投资保持稳定，机车招标大幅增长，检修业务结构性增长，通信信号业务拓展。</li>
+    <li><strong>不是高成长业务：</strong>轨交装备收入CAGR约6-7%，属于温和增长。</li>
+    <li><strong>是稳定现金牛：</strong>毛利率稳定在33%左右，经营现金流持续改善（2025年39.65亿），为新兴业务提供资金支持。</li>
+  </ul>
+  <p><strong>风险点：</strong>城轨市场受地方财政影响，招标量下滑（2026H1仅382辆车招标 vs 2025H1的1054辆）。公司已调整策略转向"装备+改造+全生命周期服务"。</p>
+  <p><strong>关联交易：</strong>作为中国中车子公司，与中车体系存在大量关联交易。这是双刃剑——提供稳定订单但存在治理风险。</p>
+</div>
+
+
+<!-- ====== 五、估值分析 ====== -->
+<h2 id="s5">五、估值是否真的便宜？</h2>
+
+<h3>5.1 当前估值</h3>
+<table>
+  <tr><th>指标</th><th>数值</th><th>计算方式</th></tr>
+  <tr><td>TTM PE</td><td class="num">15.36x</td><td>Wind实时数据</td></tr>
+  <tr><td>2025 PE</td><td class="num">15.5x</td><td>635.5亿 / 40.97亿</td></tr>
+  <tr><td>Forward PE (2026E)</td><td class="num">~14-15x</td><td>基于分析师46.1亿预测</td></tr>
+  <tr><td>PB（估算）</td><td class="num">~1.5x</td><td>635.5亿 / 净资产~420亿</td></tr>
+  <tr><td>PS</td><td class="num">2.2x</td><td>635.5亿 / 287亿</td></tr>
+  <tr><td>EV/EBITDA（估算）</td><td class="num">~9-10x</td><td>粗略估算</td></tr>
+  <tr><td>股息率</td><td class="num">2.39%</td><td>Wind实时数据</td></tr>
+</table>
+
+<h3>5.2 历史估值分位</h3>
+<p>时代电气自2021年科创板上市以来，PE波动区间大致在12-25倍之间。当前15.36倍处于历史中低分位（约25-30%分位），但需要注意：</p>
+<ul>
+  <li>上市初期PE较高（20-25倍），因为当时半导体叙事处于高峰期</li>
+  <li>2023-2024年PE最低触及12-13倍，对应市场对轨交公司的悲观定价</li>
+  <li>当前15.4倍高于2024年低点，但低于2025年半导体行情高潮期（约20倍）</li>
+</ul>
+
+<h3>5.3 同行业估值比较</h3>
+<table>
+  <tr><th>公司</th><th>TTM PE</th><th>2025 ROE</th><th>业务类型</th></tr>
+  <tr><td>时代电气</td><td class="num">15.4x</td><td class="num">9.75%</td><td>轨交+半导体+新能源装备</td></tr>
+  <tr><td>中国中车</td><td class="num">~18x</td><td class="num">~6%</td><td>纯轨交</td></tr>
+  <tr><td>斯达半导</td><td class="num">~50x</td><td class="num">~8%</td><td>纯功率半导体</td></tr>
+  <tr><td>士兰微</td><td class="num">~80x</td><td class="num">~3%</td><td>功率半导体+LED</td></tr>
+  <tr><td>汇川技术</td><td class="num">~30x</td><td class="num">~20%</td><td>工业自动化+新能源</td></tr>
+</table>
+
+<h3>5.4 分部估值（SOTP）</h3>
+<table>
+  <tr><th>业务板块</th><th>2025收入</th><th>估算净利润</th><th>合理PE</th><th>估值</th></tr>
+  <tr><td>轨道交通装备</td><td class="num">158亿</td><td class="num">~23亿</td><td class="num">12-15x</td><td class="num">276-345亿</td></tr>
+  <tr><td>功率半导体</td><td class="num">53.6亿</td><td class="num">~5亿</td><td class="num">30-40x</td><td class="num">150-200亿</td></tr>
+  <tr><td>新能源电驱+发电</td><td class="num">56.7亿</td><td class="num">~0亿</td><td class="num">1-2x PS</td><td class="num">57-113亿</td></tr>
+  <tr><td>海工+工业</td><td class="num">17.5亿</td><td class="num">~2亿</td><td class="num">15-20x</td><td class="num">30-40亿</td></tr>
+  <tr><td>净现金/其他</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num">~50亿</td></tr>
+  <tr><td style="font-weight:bold">合计</td><td class="num">-</td><td class="num">-</td><td class="num">-</td><td class="num" style="font-weight:bold">563-748亿</td></tr>
+</table>
+<p>SOTP估值区间563-748亿，中值约655亿，与当前市值635.5亿基本一致。这意味着<strong>当前估值已经合理反映了各业务板块的公允价值</strong>，不存在明显的低估。</p>
+
+<h3>5.5 情景分析</h3>
+<div class="scenario-grid">
+  <div class="scenario bear">
+    <div class="label">Bear Case</div>
+    <div>收入增长 5%</div>
+    <div>利润增长 0%</div>
+    <div>合理PE 12x</div>
+    <div class="price">35-40元</div>
+    <div style="color:var(--danger)">-20% ~ -25%</div>
+  </div>
+  <div class="scenario base">
+    <div class="label">Base Case</div>
+    <div>收入增长 10%</div>
+    <div>利润增长 8%</div>
+    <div>合理PE 15x</div>
+    <div class="price">45-52元</div>
+    <div>~0%</div>
+  </div>
+  <div class="scenario bull">
+    <div class="label">Bull Case</div>
+    <div>收入增长 18%</div>
+    <div>利润增长 18%</div>
+    <div>合理PE 20x</div>
+    <div class="price">65-70元</div>
+    <div style="color:var(--success)">+40% ~ +50%</div>
+  </div>
+</div>
+
+<h3>5.6 为什么市场只给予15倍PE？</h3>
+<div class="card">
+  <p><strong>市场给予15倍PE并非"错误定价"，而是有充分合理性的：</strong></p>
+  <ol>
+    <li><strong>ROE仅9.75%：</strong>在A股，ROE低于10%的公司很难获得高估值溢价。时代电气的资本效率偏低。</li>
+    <li><strong>利润增速放缓：</strong>2025年归母净利润增速10.6%，2026H1进一步放缓。市场对GARP（Growth at Reasonable Price）的定价是合理的。</li>
+    <li><strong>业务结构：</strong>55%收入来自低增长轨交，限制了估值天花板。新兴业务虽然增长快，但盈利能力弱。</li>
+    <li><strong>国企折价：</strong>作为中国中车子公司，存在国企治理折价——关联交易、管理层激励不足、资本配置效率偏低。</li>
+    <li><strong>半导体竞争加剧：</strong>2026H1半导体净利润暴跌52%，市场对"半导体成长故事"的信心在下降。</li>
+    <li><strong>资本开支大、折旧高：</strong>大规模扩产意味着持续的资本开支和折旧压力，自由现金流受限。</li>
+  </ol>
+  <p><strong>核心结论：15倍PE是市场对"低ROE+增速放缓+业务结构偏传统+国企治理"的合理定价，而非错误定价。估值重估的前提是ROE提升至12%+和利润增速恢复至15%+，而这在2026年大概率不会发生。</strong></p>
+</div>
+
+
+<!-- ====== 六、技术面分析 ====== -->
+<h2 id="s6">六、技术面独立分析</h2>
+
+<h3>6.1 长期趋势（周K，2021-2026）</h3>
+<div class="card">
+  <p><strong>判断：大箱体震荡，尚未形成明确牛市趋势。</strong></p>
+  <ul>
+    <li>2021年上市后从约50元涨至2022年初约60元，随后进入长期下跌通道</li>
+    <li>2023年底触及约30元低点</li>
+    <li>2024年3月-8月反弹至约50-55元区间</li>
+    <li>2024年8月底暴跌至约42元，9月底反弹至约50元</li>
+    <li>2025年震荡上行，2026年1月突破至60元</li>
+    <li>2026年5月-7月暴力拉升：5月13日从48.63跳空至58.48（+20%），此后持续拉升，6月30日触及68.32（52周最高）</li>
+    <li>2026年7月1日-17日暴跌：从68.30跌至43.62（-36%），成交量巨大</li>
+    <li>2026年7月17日至今：从43.62反弹至47.76</li>
+  </ul>
+  <p><strong>长期大箱体：上沿约68元，下沿约30元，中轴约50元。</strong></p>
+</div>
+
+<h3>6.2 中期趋势（周K，2025年至今）</h3>
+<div class="card">
+  <p><strong>判断：上涨趋势已破坏，处于下跌后的修复/震荡阶段。</strong></p>
+  <ul>
+    <li>2025年8月-2026年6月的上涨趋势清晰：从约42元涨至68元，涨幅约62%</li>
+    <li>2026年7月暴跌36%回到43.62，跌破了上涨趋势线</li>
+    <li>当前处于暴跌后的修复期，尚未形成新的趋势</li>
+  </ul>
+</div>
+
+<h3>6.3 短期趋势（日K，近期）</h3>
+<div class="card">
+  <p><strong>判断：暴跌后的筑底/反弹阶段，尚未确认反转。</strong></p>
+  <ul>
+    <li>2026年7月17日低点43.62，随后反弹至约50元</li>
+    <li>2026年8月20日大幅下跌至46.57（-4.38%），8月21日反弹至47.76</li>
+    <li>短期均线：价格在5日、10日、20日均线附近纠缠</li>
+    <li>成交量：7月暴跌时放量（超2000万手/日），近期缩量（约400万手/日），表明抛压减轻</li>
+  </ul>
+</div>
+
+<h3>6.4 关键价位</h3>
+<table>
+  <tr><th>类型</th><th>价格</th><th>说明</th></tr>
+  <tr><td style="color:var(--danger)">主要压力位</td><td class="num">50-52</td><td>前期平台/成交密集区</td></tr>
+  <tr><td style="color:var(--danger)">次级压力位</td><td class="num">55-56</td><td>2026年6月整理平台</td></tr>
+  <tr><td style="color:var(--danger)">强压力位</td><td class="num">68.32</td><td>52周最高/前高</td></tr>
+  <tr><td style="color:var(--success)">主要支撑位</td><td class="num">43.62</td><td>52周最低/前低</td></tr>
+  <tr><td style="color:var(--success)">次级支撑位</td><td class="num">45-46</td><td>近期反弹支撑</td></tr>
+  <tr><td>成交密集区</td><td class="num">48-52</td><td>2026年Q2-Q3核心交易区间</td></tr>
+</table>
+
+<h3>6.5 当前阶段判断</h3>
+<div class="card">
+  <p><strong>更接近：高位震荡后的派发/下跌趋势中的修复反弹。</strong></p>
+  <ul>
+    <li>2026年5-7月的暴涨暴跌符合"高位派发"特征——大幅拉升后快速回落，成交量巨大</li>
+    <li>当前从43.62反弹至47.76，属于暴跌后的技术性修复</li>
+    <li>尚未出现明确的吸筹结构或底部确认信号</li>
+  </ul>
+</div>
+
+
+<!-- ====== 七、交易结构 ====== -->
+<h2 id="s7">七、寻找可执行交易结构</h2>
+
+<h3>7.1 是否存在2B结构？</h3>
+<div class="card">
+  <p><strong>当前不存在标准2B结构。</strong></p>
+  <p>2B结构要求：跌破重要前低 → 无法继续下跌 → 快速重新站回前低。7月17日低点43.62是52周最低，但之前没有形成可识别的前低作为参照。43.62是恐慌性低点，不是2B结构中的"假跌破"。</p>
+</div>
+
+<h3>7.2 是否存在1-2-3反转？</h3>
+<div class="card">
+  <p><strong>当前1-2-3结构尚未形成。</strong></p>
+  <ul>
+    <li>Point 1（趋势低点）：43.62（2026-07-17）</li>
+    <li>Point 2（反弹高点）：约50.18（2026-08-11）</li>
+    <li>Point 3（回撤低点）：尚未确认。如果价格在43.62以上形成更高低点，并突破Point 2（50.18），则1-2-3反转成立。当前价格47.76，尚未形成Point 3。</li>
+  </ul>
+</div>
+
+<h3>7.3 是否存在箱体？</h3>
+<div class="card">
+  <p><strong>当前正在形成一个小箱体。</strong></p>
+  <ul>
+    <li><strong>箱体下沿：</strong>43.62-45.00（7月17日低点至近期支撑）</li>
+    <li><strong>箱体上沿：</strong>约50.00-50.50（8月11日-13日高点区域）</li>
+    <li><strong>箱体宽度：</strong>约5-7元，约12-15%</li>
+    <li><strong>当前价格：</strong>47.76，处于箱体中上部</li>
+    <li><strong>突破确认：</strong>需要收盘价站上50.50并伴随成交量放大（至少日均成交量的1.5倍以上）</li>
+    <li><strong>假突破识别：</strong>突破后快速回落至50以下，且成交量未持续</li>
+  </ul>
+</div>
+
+
+<!-- ====== 八、交易计划 ====== -->
+<h2 id="s8">八、完整交易计划</h2>
+
+<div class="verdict-box verdict-wait">
+  <h3>当前操作：等待</h3>
+  <p>主要理由：当前处于暴跌后的修复期，技术结构尚未确认反转。基本面方面，2026H1半导体净利润暴跌52%、新能源板块塌方，短期利润承压明确。估值处于合理区间但无安全边际。需要等待更明确的入场信号。</p>
+</div>
+
+<h3>8.1 左侧买点（2B结构）</h3>
+<div class="card">
+  <p><strong>当前不存在标准2B结构，但可关注：</strong></p>
+  <ul>
+    <li><strong>触发条件：</strong>价格再次回踩43.62-45.00区间，且出现放量止跌信号（长下影线+缩量+次日阳线确认）</li>
+    <li><strong>买入价格区域：</strong>44-46元</li>
+    <li><strong>第一笔仓位：</strong>总计划仓位的30%（约总资金的3-5%）</li>
+    <li><strong>止损：</strong>收盘价跌破43.00元（盘中跌破43.62可临时减仓）</li>
+  </ul>
+</div>
+
+<h3>8.2 右侧买点（箱体突破/1-2-3反转）</h3>
+<div class="card">
+  <ul>
+    <li><strong>突破位置：</strong>收盘价站上50.50元</li>
+    <li><strong>成交量要求：</strong>突破日成交量至少为20日均量的1.5倍（约800万手以上）</li>
+    <li><strong>确认方式：</strong>收盘确认，而非盘中突破</li>
+    <li><strong>买入仓位：</strong>总计划仓位的50%</li>
+    <li><strong>止损：</strong>收盘价跌破48.00元</li>
+  </ul>
+</div>
+
+<h3>8.3 加仓</h3>
+<div class="card">
+  <ul>
+    <li><strong>第一次加仓：</strong>突破50.50后回踩50-51区间确认支撑，加仓20%</li>
+    <li><strong>第二次加仓：</strong>突破55.00（前期平台）并确认，加仓剩余20%</li>
+    <li><strong>最大仓位：</strong>总可投资金的15-20%（不超过总投资组合的20%）</li>
+  </ul>
+</div>
+
+<h3>8.4 止损</h3>
+<div class="card">
+  <ul>
+    <li><strong>盘中硬止损：</strong>跌破43.00元（较43.62低约1.4%）</li>
+    <li><strong>收盘结构止损：</strong>收盘价跌破43.62元（前低失效）</li>
+    <li><strong>基本面止损：</strong>以下任一条件触发：<br>
+      a) 2026全年归母净利润低于38亿（同比下降7%+）<br>
+      b) 半导体业务连续两个季度净利润同比下滑超过30%<br>
+      c) 轨交业务收入出现同比负增长<br>
+      d) 公司大股东/中车体系出现重大不利变化</li>
+  </ul>
+</div>
+
+<h3>8.5 止盈/退出</h3>
+<div class="card">
+  <ul>
+    <li><strong>第一目标位：</strong>55-56元（前期平台），潜在收益+15%</li>
+    <li><strong>第二目标位：</strong>63-65元（接近前高），潜在收益+35%</li>
+    <li><strong>移动止损：</strong>价格突破55元后，将止损上移至50元；突破60元后，上移至55元</li>
+    <li><strong>趋势退出条件：</strong>周K收盘跌破20周均线，或日K出现连续3日低于前一日低点</li>
+  </ul>
+</div>
+
+<h3>8.6 风险收益比</h3>
+<div class="card">
+  <p><strong>以右侧买入（50.50元）为基准：</strong></p>
+  <ul>
+    <li>止损：48.00元，风险 = 2.50元（-5.0%）</li>
+    <li>第一目标：55.00元，收益 = 4.50元（+8.9%）</li>
+    <li>第二目标：63.00元，收益 = 12.50元（+24.8%）</li>
+    <li>R/R（第一目标）：1.8:1</li>
+    <li>R/R（第二目标）：5.0:1</li>
+  </ul>
+  <p><strong>以左侧买入（45.00元）为基准：</strong></p>
+  <ul>
+    <li>止损：43.00元，风险 = 2.00元（-4.4%）</li>
+    <li>第一目标：50.50元，收益 = 5.50元（+12.2%）</li>
+    <li>R/R（第一目标）：2.75:1</li>
+  </ul>
+  <p><strong>综合判断：</strong>风险收益比尚可，但并非特别优秀。左侧买入的R/R更好，但需要承担更高的不确定性。考虑到基本面短期承压，建议等待右侧确认后再入场。</p>
+</div>
+
+
+<!-- ====== 九、红队分析 ====== -->
+<h2 id="s9">九、强制红队：尝试证伪时代电气投资逻辑</h2>
+
+<div class="card" style="border-color: var(--danger);">
+  <p><strong>被挑战的投资逻辑：</strong><em>"时代电气拥有稳定轨交现金牛，同时功率半导体、新能源汽车、新能源装备构成第二增长曲线；新兴装备和半导体保持较快增长，但市场仍然主要按照传统轨交/装备公司定价，因此存在成长与估值错配。一旦新兴业务占比继续提高并带动集团利润恢复15%-20%增长，可能出现盈利增长+估值重估的戴维斯双击。"</em></p>
+</div>
+
+<h3>攻击点1：轨交现金牛真的稳定吗？</h3>
+<p><strong>证伪：</strong>城轨市场2026H1招标量仅382辆车（vs 2025H1的1054辆），几乎腰斩。地方财政压力下城轨投资收缩是长期趋势。铁路投资虽然稳定，但"适度超前但不过度超前"的政策基调意味着没有超预期空间。轨交业务收入CAGR仅6-7%，远不能称为"成长"。更关键的是，轨交业务的ROE贡献仅为个位数，作为"现金牛"的质量存疑。</p>
+
+<h3>攻击点2：半导体业务盈利能力被严重高估</h3>
+<p><strong>证伪：</strong>2026H1时代半导体收入27.06亿，净利润仅2.12亿，净利润率7.8%。而2025H1净利润4.42亿，净利润率18.1%。一年之内利润率腰斩。汽车IGBT和新能源IGBT处于价格战中，公司明确承认"竞争激烈"。低压IGBT虽然开始企稳回升，但回升幅度和持续性存疑。半导体的"高增长"叙事，在利润层面几乎没有兑现。</p>
+
+<h3>攻击点3：新业务增长没有传导到集团利润</h3>
+<p><strong>证伪：</strong>这是最致命的攻击点。新兴装备2025年收入127.8亿（+26.4%），但集团归母净利润仅增长10.6%。2026H1这个趋势进一步恶化——半导体净利润暴跌52%，新能源板块收入暴跌65%，汽车电驱仍未盈利。新业务的"收入增长"正在被"利润塌方"所抵消。</p>
+
+<h3>攻击点4：SiC存在产能过剩风险</h3>
+<p><strong>证伪：</strong>国内SiC产能建设热潮已经导致产能过剩担忧。三安光电、天岳先进、天科合达等都在大规模扩产。时代电气株洲8英寸SiC线2027年中才达第一阶段产能，届时可能面临激烈的价格竞争。SiC的"蓝海"正在快速变为"红海"。</p>
+
+<h3>攻击点5：IGBT正在经历价格战</h3>
+<p><strong>证伪：</strong>公司已明确承认"汽车IGBT和新能源IGBT市场竞争激烈"。7月发的涨价函恰恰说明成本压力巨大，而非需求旺盛。IGBT国产化率提升后，从"供不应求"转向"供过于求"是必然趋势。</p>
+
+<h3>攻击点6：国产替代逻辑已经Price In</h3>
+<p><strong>证伪：</strong>IGBT国产化率在过去3年快速提升，时代电气在车规IGBT的市占率已达13.8%。进一步替代的空间在缩小，边际增速在放缓。2026H1半导体收入增速仅10.9%，较2025年的30.4%明显减速。</p>
+
+<h3>攻击点7：低估值是价值陷阱</h3>
+<p><strong>证伪：</strong>15倍PE对应ROE仅9.75%，PB约1.5倍。从PB-ROE框架看，这不是低估，而是合理定价。如果ROE不能提升至12%+，15倍PE就是天花板。低PE+低ROE=价值陷阱，而非低估机会。</p>
+
+<h3>攻击点8：国企治理压制ROE</h3>
+<p><strong>证伪：</strong>作为中国中车子公司，时代电气存在明显的国企治理问题：管理层激励不足、关联交易、资本配置效率偏低。ROE从7.1%到9.75%的改善用了4年，速度太慢。国企体制下，很难期待ROE快速跃升至15%+。</p>
+
+<h3>攻击点9：资本开支吞噬现金流</h3>
+<p><strong>证伪：</strong>宜兴IGBT+株洲SiC双线建设，资本开支巨大。折旧持续增长，2026H1半导体净利润暴跌52%中折旧是重要原因。未来SiC产能爬坡还需要持续投入。自由现金流远低于经营现金流。</p>
+
+<h3>攻击点10：半导体周期下行风险</h3>
+<p><strong>证伪：</strong>全球半导体周期具有明显的周期性。IGBT/SiC虽然受益于新能源结构性需求，但并非免疫周期。如果全球新能源汽车增速放缓（2026年已出现迹象），功率半导体需求将承压。</p>
+
+<h3>红队总结</h3>
+<div class="card" style="border-color: var(--danger);">
+  <p><strong>上述15个攻击点中，最具杀伤力的是第2、3、5、7点：</strong></p>
+  <ol>
+    <li>半导体业务利润正在塌方，而非增长</li>
+    <li>新业务收入增长无法传导到利润</li>
+    <li>IGBT价格战正在侵蚀盈利能力</li>
+    <li>15倍PE+9.75%ROE不是低估，是合理定价</li>
+  </ol>
+  <p><strong>投资逻辑的核心漏洞：</strong>假设"新兴业务收入高增长→利润高增长→估值重估"的传导链条，但2026H1的数据证明这个链条在"利润"环节断裂了。半导体收入+10.9%，净利润-52%，这是典型的"增收不增利"。</p>
+</div>
+
+
+<!-- ====== 十、替代标的 ====== -->
+<h2 id="s10">十、寻找替代标的</h2>
+
+<div class="card">
+  <p><strong>如果投资目标是"基本面真实+科技制造+成长+估值合理"的A股公司，时代电气不是最优解。</strong></p>
+</div>
+
+<table>
+  <tr><th>公司</th><th>成长性</th><th>护城河</th><th>估值</th><th>技术结构</th><th>风险</th><th>风险收益比</th></tr>
+  <tr>
+    <td style="font-weight:bold">时代电气</td>
+    <td>中等</td><td>中（轨交独占+半导体IDM）</td><td>中等（15x PE）</td><td>弱（暴跌后修复）</td><td>中高</td><td>一般</td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">汇川技术</td>
+    <td>高</td><td>强（工控龙头+新能源）</td><td>较高（30x PE）</td><td>待分析</td><td>中</td><td>较好</td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">中控技术</td>
+    <td>高</td><td>强（DCS龙头+国产替代）</td><td>较高（35x PE）</td><td>待分析</td><td>中</td><td>较好</td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">国电南瑞</td>
+    <td>中等</td><td>强（电网自动化垄断）</td><td>合理（20x PE）</td><td>待分析</td><td>低</td><td>较好</td>
+  </tr>
+  <tr>
+    <td style="font-weight:bold">斯达半导</td>
+    <td>高</td><td>中（车规IGBT先发）</td><td>高（50x PE）</td><td>待分析</td><td>高</td><td>一般</td>
+  </tr>
+</table>
+<p><strong>初步判断：</strong>如果在"科技制造+成长+估值合理"的三维框架下比较，汇川技术（工控龙头，ROE 20%+）和国电南瑞（电网自动化垄断，确定性高）可能比时代电气更具吸引力。但这需要进一步独立研究验证。</p>
+
+
+<!-- ====== 十一、空头报告 ====== -->
+<h2 id="s11">十一、空头报告：如果我是空头，我为什么绝对不会买时代电气</h2>
+
+<div class="card" style="border-color: var(--danger); background: #1a0a0a;">
+  <h3 style="color: var(--danger);">纯空头立场</h3>
+
+  <p><strong>1. 商业模式：</strong>时代电气是一个"大杂烩"——轨交、半导体、新能源电驱、光伏逆变器、海工装备、工业变流、通信信号……什么都做，但什么都不精。多元化折价（conglomerate discount）是合理的。资本市场为什么要为这样一个"什么都做但ROE不到10%"的公司支付溢价？</p>
+
+  <p><strong>2. 半导体竞争力：</strong>2026H1半导体净利润暴跌52%，这就是所谓的"第二增长曲线"？一个收入53.6亿的业务，净利润可能只有5亿左右，净利润率不到10%。而英飞凌的功率半导体业务净利润率在20%以上。时代电气的半导体业务本质上是一个"低利润率+高资本开支"的苦生意。</p>
+
+  <p><strong>3. SiC是镜花水月：</strong>市场对SiC的预期很高，但实际贡献为零。株洲8英寸线2027年才达第一阶段产能，届时SiC可能已经产能过剩。看看Wolfspeed的股价表现——SiC龙头都跌成什么样了，凭什么时代电气的SiC就应该给高估值？</p>
+
+  <p><strong>4. 估值：15倍PE贵了。</strong>ROE不到10%，利润增速在放缓，2026年可能0增长。从PEG角度看，如果2026年利润增速为0-5%，15倍PE对应PEG为3-无穷大，这怎么算便宜？</p>
+
+  <p><strong>5. ROE：</strong>9.75%的ROE，在A股制造业中处于中低水平。汇川技术ROE 20%+，中控技术ROE 15%+。时代电气大量资本沉淀在固定资产中，资产周转率低，这是国企通病。</p>
+
+  <p><strong>6. 行业周期：</strong>光伏逆变器行业正在经历惨烈的价格战（2026H1新能源板块暴跌65%），新能源汽车增速放缓，IGBT价格战持续。三个行业同时逆风，这是"完美风暴"。</p>
+
+  <p><strong>7. 公司治理：</strong>中国中车体系内的关联交易永远是一个隐患。国企体制下，管理层缺乏足够的激励去提升股东回报。ROE从7%到9.75%用了4年，这个速度太慢了。</p>
+
+  <p><strong>8. 技术走势：</strong>从68元跌到43元，跌幅36%，这是典型的"高位派发"形态。5-7月的暴涨是消息驱动（半导体叙事+轨交景气），但随后暴跌说明聪明钱在出货。当前反弹至47元只是技术性修复，不是反转。</p>
+
+  <p><strong>9. 结论：</strong>时代电气是一个"什么都有一点但什么都不够好"的公司。轨交是低增长现金牛但不性感，半导体是成长故事但利润在塌方，新能源是风口但行业在逆风，SiC是未来但远水不解近渴。15倍PE是市场给出的公正定价，不存在低估。我不会买，而且如果有人问我做空，我会说这是一个可以考虑的标的——当然，做空A股有制度限制，这只是分析框架。</p>
+</div>
+
+<h3>恢复中立：这些空头理由是否足以推翻投资逻辑？</h3>
+<div class="card">
+  <p><strong>部分推翻，但非完全推翻。</strong></p>
+  <p>空头最强的攻击点是"半导体利润塌方"和"利润增速远低于收入增速"，这确实推翻了"戴维斯双击"的乐观假设。2026年大概率不会出现利润高增长+估值重估的局面。</p>
+  <p>但空头忽略了一些事实：</p>
+  <ul>
+    <li>轨交十五五确实有增量（国家电网4万亿+铁路投资稳定）</li>
+    <li>半导体7月涨价函表明价格可能已在底部区域</li>
+    <li>SiC虽然短期不贡献利润，但技术储备和客户卡位是真实的</li>
+    <li>公司经营现金流持续改善（2025年39.65亿），财务健康</li>
+  </ul>
+  <p><strong>综合判断：</strong>投资逻辑中的"戴维斯双击"部分被证伪。但"稳定轨交+成长半导体"的基本框架仍然成立，只是成长的斜率比乐观预期更平缓。当前价格下，不是一个"强烈买入"的机会，但也并非"必须回避"的价值陷阱。</p>
+</div>
+
+
+<!-- ====== 十二、最终结论 ====== -->
+<h2 id="s12">十二、最终强制结论</h2>
+
+<h3>A. 一句话投资结论</h3>
+<div class="card">
+  <p style="font-size:1.2em;"><strong>时代电气是一个基本面真实但利润增速正在放缓的高端装备平台公司，当前估值合理但没有明显安全边际，技术结构处于暴跌后修复期，需要等待右侧确认信号。当前操作：<span style="color:var(--warn);">等待</span>。</strong></p>
+</div>
+
+<h3>B. 评分</h3>
+<div class="score-grid">
+  <div class="score-item">
+    <div class="label">基本面</div>
+    <div class="value">7</div>
+    <div class="bar"><div class="bar-fill" style="width:70%;background:var(--accent)"></div></div>
+  </div>
+  <div class="score-item">
+    <div class="label">成长性</div>
+    <div class="value">6</div>
+    <div class="bar"><div class="bar-fill" style="width:60%;background:var(--warn)"></div></div>
+  </div>
+  <div class="score-item">
+    <div class="label">护城河</div>
+    <div class="value">6</div>
+    <div class="bar"><div class="bar-fill" style="width:60%;background:var(--accent)"></div></div>
+  </div>
+  <div class="score-item">
+    <div class="label">资本效率</div>
+    <div class="value">5</div>
+    <div class="bar"><div class="bar-fill" style="width:50%;background:var(--warn)"></div></div>
+  </div>
+  <div class="score-item">
+    <div class="label">估值吸引力</div>
+    <div class="value">6</div>
+    <div class="bar"><div class="bar-fill" style="width:60%;background:var(--accent)"></div></div>
+  </div>
+  <div class="score-item">
+    <div class="label">当前技术结构</div>
+    <div class="value">4</div>
+    <div class="bar"><div class="bar-fill" style="width:40%;background:var(--danger)"></div></div>
+  </div>
+  <div class="score-item">
+    <div class="label">风险收益比</div>
+    <div class="value">5</div>
+    <div class="bar"><div class="bar-fill" style="width:50%;background:var(--warn)"></div></div>
+  </div>
+  <div class="score-item" style="border: 2px solid var(--warn);">
+    <div class="label">综合评分</div>
+    <div class="value" style="color:var(--warn);">5.6</div>
+    <div class="bar"><div class="bar-fill" style="width:56%;background:var(--warn)"></div></div>
+  </div>
+</div>
+
+<h3>C. 当前操作</h3>
+<div class="verdict-box verdict-wait">
+  <h3 style="color:var(--warn);">等待</h3>
+  <p>理由：基本面短期承压（半导体利润暴跌、新能源塌方），技术结构未确认反转（暴跌后修复期），估值合理但无安全边际。当前不是入场时机，需要等待更明确的信号。</p>
+</div>
+
+<h3>D. 最理想买点</h3>
+<div class="card">
+  <ul>
+    <li><strong>价格：</strong>44-46元（左侧）或 50.50元以上（右侧突破确认）</li>
+    <li><strong>触发条件：</strong>左侧——回踩43.62-45.00区间且出现放量止跌信号；右侧——收盘价站上50.50元且成交量放大至1.5倍均量</li>
+    <li><strong>技术结构：</strong>左侧——箱体下沿支撑确认；右侧——箱体突破或1-2-3反转确认</li>
+  </ul>
+</div>
+
+<h3>E. 止损与失效条件</h3>
+<div class="card">
+  <ul>
+    <li><strong>价格止损：</strong>收盘价跌破43.00元</li>
+    <li><strong>基本面失效：</strong>2026全年归母净利润低于38亿；半导体连续两季净利润同比下滑30%+；轨交收入同比负增长</li>
+  </ul>
+</div>
+
+<h3>F. 仓位</h3>
+<div class="card">
+  <ul>
+    <li><strong>初始仓位：</strong>总可投资金的3-5%（左侧）或 8-10%（右侧）</li>
+    <li><strong>最大仓位：</strong>总可投资金的15-20%</li>
+    <li><strong>加仓条件：</strong>突破50.50后回踩确认 → 加至12-15%；突破55.00后确认 → 加至20%</li>
+  </ul>
+</div>
+
+<h3>G. 未来6-12个月三个最重要催化剂</h3>
+<ol>
+  <li><strong>2026年报/2027Q1：</strong>半导体利润率是否触底回升？涨价函效果如何？</li>
+  <li><strong>国家电网十五五规划落地：</strong>4万亿投资计划的具体项目分配，高压IGBT订单能否超预期？</li>
+  <li><strong>SiC产能爬坡进展：</strong>株洲8英寸线能否提前达产？SiC收入能否开始单独披露？</li>
+</ol>
+
+<h3>H. 三个最危险的反证</h3>
+<ol>
+  <li><strong>IGBT价格战持续恶化：</strong>如果2026H2半导体利润率继续下滑，全年净利润可能跌破4亿，半导体"成长故事"彻底破产</li>
+  <li><strong>轨交投资不及预期：</strong>十五五铁路投资如果因宏观经济原因被压缩，基本盘动摇</li>
+  <li><strong>新能源板块长期低迷：</strong>光伏行业调整如果持续到2027年，新能源板块将从"拖累"变为"减值风险"</li>
+</ol>
+
+<h3>I. Bull / Base / Bear</h3>
+<div class="scenario-grid">
+  <div class="scenario bull">
+    <div class="label">Bull Case</div>
+    <div>概率：25%</div>
+    <div>2027年利润增速恢复至18%</div>
+    <div>PE扩张至20x</div>
+    <div class="price">65-70元</div>
+    <div style="color:var(--success)">+40% ~ +50%</div>
+  </div>
+  <div class="scenario base">
+    <div class="label">Base Case</div>
+    <div>概率：50%</div>
+    <div>2027年利润增速8-10%</div>
+    <div>PE维持15x</div>
+    <div class="price">45-52元</div>
+    <div style="color:var(--accent)">-5% ~ +10%</div>
+  </div>
+  <div class="scenario bear">
+    <div class="label">Bear Case</div>
+    <div>概率：25%</div>
+    <div>2027年利润增速0%</div>
+    <div>PE压缩至12x</div>
+    <div class="price">35-40元</div>
+    <div style="color:var(--danger)">-20% ~ -25%</div>
+  </div>
+</div>
+<p>期望值估算：25% × 45% + 50% × 2.5% + 25% × (-22.5%) = 11.25% + 1.25% - 5.625% = <strong>+6.875%</strong>（12个月）</p>
+
+<h3>J. 最终回答</h3>
+<div class="card" style="border: 2px solid var(--warn);">
+  <p style="font-size:1.1em;"><strong>如果现在我有100万元可投资资金，我不会把其中任何一部分配置给时代电气。</strong></p>
+  <p><strong>原因：</strong></p>
+  <ol>
+    <li>当前技术结构处于暴跌后修复期，没有明确的入场信号</li>
+    <li>基本面短期承压明确——半导体利润暴跌、新能源塌方、补贴退坡</li>
+    <li>估值合理但没有安全边际，15倍PE对应9.75%ROE是公平定价</li>
+    <li>风险收益比一般，期望收益约+7%/年，不具吸引力</li>
+    <li>在A股"科技制造+成长+估值合理"的框架下，可能存在更优选择</li>
+  </ol>
+  <p><strong>什么条件改变后重新考虑：</strong></p>
+  <ol>
+    <li>价格跌至40-43元区间（对应PE约12-13倍），出现安全边际</li>
+    <li>技术面出现明确的底部结构（放量止跌+箱体突破或1-2-3反转）</li>
+    <li>半导体利润率出现明确的触底回升信号（连续两个季度净利润环比改善）</li>
+    <li>2026年报/2027Q1显示利润增速恢复至10%+</li>
+  </ol>
+  <p><strong>如果一定要配置（风险接受型投资者）：</strong>在44-46元区间小仓试错（总资金的3-5%），止损43.00元，目标50-55元。但这只是"结构化左侧小仓试错"，不是"强烈推荐买入"。</p>
+</div>
+
+<hr>
+
+<div class="disclaimer-box">
+  <p><strong>⚠️ 免责声明与数据来源</strong></p>
+  <p>本报告数据来源：Wind 万得金融数据终端（股价、财务数据、K线数据）、公司2025年年报、2026年半年报业绩交流会记录（2026-08-20）、券商研究报告（华泰证券、兴业证券、第一上海等）。</p>
+  <p>数据截止日期：2026年8月21日。股价对应交易日：2026年8月21日。</p>
+  <p>本报告中的"事实"指公司公告/财报中明确披露的数据；"推测"指基于公开数据的合理推断；"预测"指对未来的概率性判断。所有分析结论均为概率性判断，不构成投资建议。投资者应独立决策并承担风险。</p>
+  <p><strong>human_review_required: true</strong></p>
+  <p><strong>报告性质：</strong>独立研究+红队分析，不预设任何投资方向。分析师保持中立立场。</p>
+</div>
+
+</div>
+</body>
+</html>
